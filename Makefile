@@ -21,7 +21,7 @@ CLEAN=rm -f gears *.o *.a
 endif
 
 #  Compile and link
-main: main.cpp
+main: main.cpp classes.cpp
 	gcc $(CFLG) -o $@ $^ $(INCLUDES) $(LIBS)
 
 #  Clean
