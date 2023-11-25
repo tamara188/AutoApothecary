@@ -97,7 +97,12 @@ private:
         lookAt = position + glm::vec3(newLookAt);
     }
 };
-
+// class SurfaceObject(){
+//     public:
+//     SurfaceObject(){
+        
+//     }
+// }
 
 class Scene {
 public:
@@ -138,7 +143,7 @@ public:
         // Draw the room, ceiling, walls, floor, etc.
         // ...
          // Draw the four walls
-         glColor3f(0.5,0.6,0.3);
+         glColor3f(1.0, 0.0, 0.0);  // Red
          // Front face
         glBegin(GL_QUADS);
         glVertex3f(-0.5, -0.5, 0.5);
@@ -146,34 +151,35 @@ public:
         glVertex3f(0.5, 0.5, 0.5);
         glVertex3f(-0.5, 0.5, 0.5);
 
+        glColor3f(0.0, 1.0, 0.0);  // Green
       //Back face
         glVertex3f(-0.5, -0.5, -0.5);
         glVertex3f(0.5, -0.5, -0.5);
         glVertex3f(0.5, 0.5, -0.5);
         glVertex3f(-0.5, 0.5, -0.5);
         
-
+        glColor3f(0.0, 0.0, 1.0);  // Blue
         // Left face
         glVertex3f(-0.5, -0.5, -0.5);
         glVertex3f(-0.5, -0.5, 0.5);
         glVertex3f(-0.5, 0.5, 0.5);
         glVertex3f(-0.5, 0.5, -0.5);
         
-
+        glColor3f(0.0, 1.0, 1.0);  // green + blue
         // Right face
         glVertex3f(0.5, -0.5, -0.5);
         glVertex3f(0.5, -0.5, 0.5);
         glVertex3f(0.5, 0.5, 0.5);
         glVertex3f(0.5, 0.5, -0.5);
         
-
+        glColor3f(1.0, 0.0, 1.0);  // purple
         // Top face
         glVertex3f(-0.5, 0.5, 0.5);
         glVertex3f(0.5, 0.5, 0.5);
         glVertex3f(0.5, 0.5, -0.5);
         glVertex3f(-0.5, 0.5, -0.5);
         
-
+        glColor3f(0.1, 0.1, 0.1);  // grey
         // Bottom face
         glVertex3f(-0.5, -0.5, 0.5);
         glVertex3f(0.5, -0.5, 0.5);
@@ -228,8 +234,8 @@ void display() {
 }
 
 void specialKeyInput(int key, int x, int y) {
-    const float moveSpeed = 0.1f;
-    const float rotateSpeed = 2.0f;
+    const float moveSpeed = 0.01f;
+    const float rotateSpeed = 0.2f;
 
     switch (key) {
         case GLUT_KEY_UP:
