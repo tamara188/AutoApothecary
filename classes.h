@@ -47,10 +47,7 @@ private:
 
     void rotate(float angle, const glm::vec3& axis);
 };
-class SurfaceObject{
-    public:
-    SurfaceObject();
-};
+
 
 class Scene {
 public:
@@ -70,5 +67,42 @@ private:
     GLfloat radius;
     GLfloat speed;
     GLfloat currentTime = 0.0;
+};
+
+class Primitive{
+    public:
+    Primitives();
+    void addTexture();
+
+    //all primitives - box, cylinder, sphere, roof, cone, roundRoof, wedge, pyramid, halfSphere, polygon, parabloid, torus, tube
+    
+    //create a hole? 
+    private:
+    GLuint textureID;  // Texture ID
+}
+class SurfaceObject{
+    public:
+    SurfaceObject();
+
+    void fillSurfaceArea();
+    //this function fills the surface with clutter objects
+
+    void placeInWorld();
+    //this functions places the object at some location in the scene
+
+    void addPrim(Primitive obj);
+    //this function adds  primitive to the surface object
+    //might do this differently?
+    //like just using the prims to draw the object in their individual classes?
+    private:
+    //location in space
+    float xPosition = 0;
+    float yPosition = 0;
+    float zPosition = 0;
+
+    //scale
+    float xScale = 1;
+    float yScale = 1;
+    float zScale = 1;
 };
 #endif // CLASSES_H
