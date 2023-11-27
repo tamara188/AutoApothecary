@@ -71,15 +71,29 @@ private:
 
 class Primitive{
     public:
-    Primitives();
+    //Primitive();
     void addTexture();
 
     //all primitives - box, cylinder, sphere, roof, cone, roundRoof, wedge, pyramid, halfSphere, polygon, parabloid, torus, tube
-    
+    void addBox(float radius, int steps, float length, float width, float height);
+    void addCylinder(int sides, float bevel, int segments);
+    void addSphere(float radius, int steps, float length, float width, float height);//in tinkercad has only steps? but has implicit w,l,h
+    void addRoof();
+    void addCone(float topRadius, float baseRadius, float height, int sides);
+    void addRoundRoof();
+    void addWedge();
+    void addPyramid(int sides);
+    void addHalfSphere();
+    void addPolygon(int sides, float bevel, int segments);
+    void addParabloid(int steps);
+    void addTorus(float radius, float tube, int sides, int steps);
+    void addTube(float radius, float wallThickness, int sides, float bevel, int bevelSegments);
     //create a hole? 
     private:
     GLuint textureID;  // Texture ID
 }
+//a surface object is a list of primitives
+//so is a clutter object now that I think about it. 
 class SurfaceObject{
     public:
     SurfaceObject();
