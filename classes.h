@@ -5,6 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GL/glut.h>
 #include <cmath>
+#include<list>
 class Camera {
 public:
     Camera();
@@ -94,6 +95,56 @@ class Primitive{
 }
 //a surface object is a list of primitives
 //so is a clutter object now that I think about it. 
+class Object{
+    public:Object();
+    void placeInWorld();
+    //this functions places the object at some location in the scene
+     void addPrim(Primitive obj);
+    //this function adds  primitive to the surface object
+    //might do this differently?
+    //like just using the prims to draw the object in their individual classes?
+
+    private:
+    //location in space
+    float xPosition = 0;
+    float yPosition = 0;
+    float zPosition = 0;
+
+    //scale
+    float xScale = 1;
+    float yScale = 1;
+    float zScale = 1;
+
+    //list of primitives that make up the object.
+    std::list<Primitive> primList = {};
+
+    //list operations 
+    /*
+        // add element at the beginning
+    numbers.push_front(0);
+
+    // add element at the end
+    numbers.push_back(4);
+
+    // display the first element
+    cout << "First Element: " << numbers.front() << endl;
+  
+    // display the last element
+    cout << "Last Element: " << numbers.back();
+
+    // create an iterator to point to the first element of the list
+    list<int>::iterator itr = numbers.begin();
+  
+    // increment itr to point to the 2nd element
+    ++itr;
+    
+    //display the 2nd element
+    cout << "Second Element: " << *itr << endl;
+    
+    */
+
+
+}
 class SurfaceObject{
     public:
     SurfaceObject();
@@ -104,10 +155,7 @@ class SurfaceObject{
     void placeInWorld();
     //this functions places the object at some location in the scene
 
-    void addPrim(Primitive obj);
-    //this function adds  primitive to the surface object
-    //might do this differently?
-    //like just using the prims to draw the object in their individual classes?
+   
     private:
     //location in space
     float xPosition = 0;
