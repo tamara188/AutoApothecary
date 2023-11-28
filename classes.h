@@ -72,10 +72,13 @@ private:
 
 class Primitive{
     public:
-    //Primitive();
-    void addTexture();
-
+    Primitive(shape shapein,float *prop);
+    enum shape {box, cylinder, sphere, roof, cone, roundRoof, wedge, pyramid, halfSphere, polygon, parabloid, torus, tube}
     //all primitives - box, cylinder, sphere, roof, cone, roundRoof, wedge, pyramid, halfSphere, polygon, parabloid, torus, tube
+    void setProperties(float *prop);
+    void draw();//draws prim based on shape enum
+    void addTexture();//adds texture from file
+    void setShape();//sets the shape enum
     void addBox(float radius, int steps, float length, float width, float height);
     void addCylinder(int sides, float bevel, int segments);
     void addSphere(float radius, int steps, float length, float width, float height);//in tinkercad has only steps? but has implicit w,l,h
@@ -92,11 +95,13 @@ class Primitive{
     //create a hole? 
     private:
     GLuint textureID;  // Texture ID
+    float properties = [];
 }
 //a surface object is a list of primitives
 //so is a clutter object now that I think about it. 
-class Object{
-    public:Object();
+class Item{
+    public:
+    Item();
     void placeInWorld();
     //this functions places the object at some location in the scene
      void addPrim(Primitive obj);

@@ -83,7 +83,57 @@
         lookAt = position + glm::vec3(newLookAt);
     }
 
-
+    Primitive::Primitive(shape shapein,float *prop){
+        shapein;
+        properties = prop;
+    }
+    Primitive::setProperties(float *prop){
+        properties = prop;
+    }
+    Primitive::draw(){
+        //all primitives - box, cylinder, sphere, roof, cone, roundRoof, wedge, pyramid, halfSphere, polygon, parabloid, torus, tube
+        switch(shape){
+            case box:
+                //draw a box
+                break;
+            case cylinder:
+                //draw cylinder
+                break;
+            case sphere:
+                //draw sphere
+                break;
+            case roof:
+                //draw roof
+                break;
+            case cone:
+                //draw cone
+                break;
+            case roundRoof:
+                //draw half cylinder
+                break;
+            case wedge:
+                //draw wedge
+                break;
+            case pyramid:
+                //draw pyramid
+                break;
+            case halfSphere:
+                //draw half sphere
+                break;
+            case polygon:
+                //draw polygon
+                break;
+            case parabloid:
+                //draw parabloid
+                break;
+            case torus:
+                //draw torus
+                break;
+            case tube:
+                //draw tube
+                break;
+        }
+    }
     SurfaceObject::SurfaceObject(){
         
     }
