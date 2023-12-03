@@ -194,6 +194,7 @@ Primitive::draw(){
                 glNormal3f( 0,-properties[0], 0);
             }
             glEnd();
+            //TODO normals
             glBegin(GL_QUADS);
             for(int i = 0; i < sides; i++){
                 topCircle[i];
@@ -211,9 +212,49 @@ Primitive::draw(){
             break;
         case sphere:
             //draw sphere
+            //properties radius steps, sides
+            float currHeight = -properties[0];
+            float stepHeight = (2 * properties[0])/properties[1];
+            //do bottom
+            
+            currHeight += stepHeight; 
+            float crossSectionRadius = sqrt((properties[0]*properties[0])-(currHeight*currHeight))
+            bottomCircle = Primitive.createPolygon(0,currHeight,0,crossSectionRadius,properties[2]);
+            glBegin(GL_TRIANGLE_FAN);
+            glVertex3f(0,currHeight,0);
+            for(int i = 0; i < sides; i++){
+                bottomCircle[i];
+                //TODO: normals
+                glNormal3f( 0,currHeight, 0);
+            }
+            bottomCircle[0];
+            glEnd();
+            for(int i = 0; i < steps, i++){
+
+            }
+            
             break;
         case roof:
             //draw roof
+            //parameters height,width,length
+            //bottom
+
+            //east
+
+            //west
+
+            //north
+            glBegin(GL_TRIANGLES);
+            glVertex3f(-properties[1]/2,-properties[0]/2,-properties[2]/2);
+            glVertex3f(properties[1]/2,-properties[0]/2,-properties[2]/2);
+            glVertex3f(0,properties[0]/2,-properties[2]/2);
+            glEnd();
+            //south
+            glBegin(GL_TRIANGLES);
+            glVertex3f(-properties[1]/2,-properties[0]/2,properties[2]/2);
+            glVertex3f(properties[1]/2,-properties[0]/2,properties[2]/2);
+            glVertex3f(0,properties[0]/2,properties[2]/2);
+            glEnd();
             break;
         case cone:
             //draw cone
@@ -244,7 +285,7 @@ Primitive::draw(){
             break;
     }
 }
-Primitive::createPolygon(int Cx, int Cy, int Cz, float radius, int sides){
+Primitive::createPolygon(float Cx, float Cy, float Cz, float radius, float sides){
 
     glVertex3d points[sides];
     theta = 0;
