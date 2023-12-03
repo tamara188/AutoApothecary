@@ -182,6 +182,18 @@ Primitive::draw(){
             //properties height,radius,sides
             topCircle = Primitive.createPolygon(0,properties[0]/2,0,properties[1],properties[2]);
             bottomCircle = Primitive.createPolygon(0,-properties[0]/2,0,properties[1],properties[2]);
+            glBegin(GL_TRIANGLE_FAN);
+            for(int i = 0; i < sides; i++){
+                topCircle[i];
+                glNormal3f( 0,properties[0], 0);
+            }
+            glEnd();
+            glBegin(GL_TRIANGLE_FAN);
+            for(int i = 0; i < sides; i++){
+                bottomCircle[i];
+                glNormal3f( 0,-properties[0], 0);
+            }
+            glEnd();
             glBegin(GL_QUADS);
             for(int i = 0; i < sides; i++){
                 topCircle[i];
@@ -189,9 +201,11 @@ Primitive::draw(){
                 if(i+1 = sides){
                     bottomCircle[0];
                     topCircle[0];
+                }else{
+                    bottomCircle[i+1];
+                    topCircle[i+1];
                 }
-                bottomCircle[i+1];
-                topCircle[i+1];
+                glNormal3f( 0,-properties[0], 0);
             }
             glEnd();
             break;
