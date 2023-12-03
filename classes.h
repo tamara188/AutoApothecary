@@ -6,10 +6,18 @@
 #include <GL/glut.h>
 #include <cmath>
 #include<list>
+
+    //  cos and sin in degrees
+    #define Cos(th) cos(3.14159265/180*(th))
+    #define Sin(th) sin(3.14159265/180*(th))
 class Camera {
 public:
     Camera();
     void apply() const;
+
+    void mouse(int button, int state, int x, int y);
+
+    void motion(int x, int y);
     void moveForward(float distance);
 
     void moveBackward(float distance);
@@ -35,6 +43,8 @@ private:
     float farClip;
     float fov;
     float aspectRatio;
+    int mouseX, mouseY;
+    bool isMouseCaptured = false;
 
     glm::vec3 forwardVector() const;
 
@@ -53,7 +63,7 @@ private:
 class Scene {
 public:
    Camera camera;
-    Scene();
+    //Scene();
 
 
     void draw();
@@ -77,8 +87,10 @@ class Primitive{
     //all primitives - box, cylinder, sphere, roof, cone, roundRoof, wedge, pyramid, halfSphere, polygon, parabloid, torus, tube
     void setProperties(float *prop);
     void draw();//draws prim based on shape enum
+   
     void addTexture();//adds texture from file
     void setShape();//sets the shape enum
+
     void addBox(float radius, int steps, float length, float width, float height);
     void addCylinder(int sides, float bevel, int segments);
     void addSphere(float radius, int steps, float length, float width, float height);//in tinkercad has only steps? but has implicit w,l,h
@@ -88,7 +100,7 @@ class Primitive{
     void addWedge();
     void addPyramid(int sides);
     void addHalfSphere();
-    void addPolygon(int sides, float bevel, int segments);
+    void addPolyhedra(int sides, float bevel, int segments);//is this possible?
     void addParabloid(int steps);
     void addTorus(float radius, float tube, int sides, int steps);
     void addTube(float radius, float wallThickness, int sides, float bevel, int bevelSegments);
@@ -96,6 +108,7 @@ class Primitive{
     private:
     GLuint textureID;  // Texture ID
     float properties = [];
+     glVertex3d* createPolygon(int x, int y, int z, float radius, int sides);
 }
 //a surface object is a list of primitives
 //so is a clutter object now that I think about it. 
